@@ -40,9 +40,11 @@
           <h2>EduQuest</h2>
           <p class="lead">Gabungkan pembelajaran dan permainan. Pilih game. Pilih level. Menangkan badge neon!</p>
           <div class="home-actions">
-            <button id="home-play" class="neon-btn large">Play Now</button>
-            <a href="#Tentang" id="home-about" class="ghost-link">Pelajari lebih lanjut</a>
-          </div>
+    <button id="home-play" class="neon-btn large">Play Now</button>
+    <button class="ghost-link" data-target="page-about">
+      Pelajari lebih lanjut
+    </button>
+  </div>
           <div class="badges-preview">
             <div class="badge neon-badge">⚡</div>
             <div class="badge neon-badge alt">💡</div>
@@ -199,18 +201,25 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="page-about" class="page">
-      <div class="page-top">
-        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
-      </div>
-      <h2>Tentang EduQuest</h2>
-      <p>EduQuest dibuat sebagai proyek web statis yang menggabungkan pembelajaran dan permainan. Cocok untuk portofolio dan tugas.</p>
-      <ul>
-        <li>Target: Pelajar SMP/SMA, Mahasiswa, Pengguna umum</li>
-        <li>Teknologi: HTML, CSS, JavaScript</li>
-        <li>Progress disimpan di localStorage (tanpa backend)</li>
-      </ul>
-    </section>
+<section id="page-about" class="page">
+  <div class="page-top">
+    <button class="ghost-link back-home" data-target="page-home">
+      &larr; Kembali ke Home
+    </button>
+  </div>
+
+  <h2>Tentang EduQuest</h2>
+  <p>
+    EduQuest dibuat sebagai proyek web statis yang menggabungkan
+    pembelajaran dan permainan. Cocok untuk portofolio dan tugas.
+  </p>
+
+  <ul>
+    <li>Target: Pelajar SMP/SMA, Mahasiswa, Pengguna umum</li>
+    <li>Teknologi: HTML, CSS, JavaScript</li>
+    <li>Progress disimpan di localStorage (tanpa backend)</li>
+  </ul>
+</section>
 
     <!-- CONTACT -->
     <section id="page-contact" class="page">
