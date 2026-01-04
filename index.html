@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduQuest — Website Edukasi Berbasis Game</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark">
+  <header class="topbar">
+    <div class="brand">
+      <h1 class="logo">EduQuest</h1>
+      <p class="tagline">Belajar melalui permainan — Neon Cyber Aesthetic</p>
+      <div id="player-badge" class="player-badge" title="Profil pemain">
+        <!-- Player name injected here -->
+      </div>
+    </div>
+    <nav class="nav">
+      <button id="nav-home" class="nav-btn">Home</button>
+      <button id="nav-games" class="nav-btn">Pilih Game</button>
+      <button id="nav-levels" class="nav-btn">Levels</button>
+      <button id="nav-profile" class="nav-btn">Profile</button>
+      <button id="nav-about" class="nav-btn">Tentang</button>
+      <button id="nav-contact" class="nav-btn">Kontak</button>
+    </nav>
+    <div class="cta">
+      <button id="play-now" class="neon-btn">Play Now</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <div>
+          <h2>EduQuest</h2>
+          <p class="lead">Gabungkan pembelajaran dan permainan. Pilih game. Pilih level. Menangkan badge neon!</p>
+          <div class="home-actions">
+            <button id="home-play" class="neon-btn large">Play Now</button>
+            <a href="#about" id="home-about" class="ghost-link">Pelajari lebih lanjut</a>
+          </div>
+          <div class="badges-preview">
+            <div class="badge neon-badge">⚡</div>
+            <div class="badge neon-badge alt">💡</div>
+            <div class="badge neon-badge alt2">🏆</div>
+          </div>
+        </div>
+        <div class="quick-profile neon-card">
+          <h3>Profil Pemain</h3>
+          <div id="profile-summary">Belum ada data pemain. <br><button id="profile-cta" class="neon-btn small">Isi Profil</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES (choose game) -->
+    <section id="page-games" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+        <h2>Pilih Game</h2>
+      </div>
+
+      <div class="cards">
+        <div class="card neon-card" data-game="logic-quest">
+          <h3>Logic Quest</h3>
+          <p>Game logika sederhana: pola dan urutan berpikir.</p>
+          <div class="card-actions">
+            <button class="select-game neon-btn small" data-game="logic-quest">Pilih</button>
+            <div class="meta">Level: <span id="progress-logic-quest">0</span></div>
+          </div>
+        </div>
+
+        <div class="card neon-card" data-game="it-quest">
+          <h3>IT Quest</h3>
+          <p>Edukasi dasar IT: password, keamanan, internet.</p>
+          <div class="card-actions">
+            <button class="select-game neon-btn small" data-game="it-quest">Pilih</button>
+            <div class="meta">Level: <span id="progress-it-quest">0</span></div>
+          </div>
+        </div>
+
+        <div class="card neon-card" data-game="think-quest">
+          <h3>Think Quest</h3>
+          <p>Problem solving & pengambilan keputusan sederhana.</p>
+          <div class="card-actions">
+            <button class="select-game neon-btn small" data-game="think-quest">Pilih</button>
+            <div class="meta">Level: <span id="progress-think-quest">0</span></div>
+          </div>
+        </div>
+
+        <div class="card neon-card" data-game="edu-quiz">
+          <h3>Edu Quiz</h3>
+          <p>Kuis pengetahuan umum ringan & menyenangkan.</p>
+          <div class="card-actions">
+            <button class="select-game neon-btn small" data-game="edu-quiz">Pilih</button>
+            <div class="meta">Level: <span id="progress-edu-quiz">0</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVELS -->
+    <section id="page-levels" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+        <button id="back-to-games" class="ghost-link">&larr; Kembali ke Pilih Game</button>
+      </div>
+      <h2 id="levels-title">Pilih Level</h2>
+      <div id="levels-grid" class="levels-grid">
+        <!-- Level buttons injected by JS -->
+      </div>
+      <div class="levels-info">
+        <p>Level akan terbuka setelah level sebelumnya selesai. Progress tersimpan di browser (localStorage).</p>
+      </div>
+    </section>
+
+    <!-- GAME PLAY -->
+    <section id="page-game" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+        <button id="back-to-levels" class="ghost-link">&larr; Kembali ke Level</button>
+      </div>
+
+      <div class="game-header">
+        <h2 id="game-title">Game</h2>
+        <div class="scorebox neon-box">
+          <div>Player: <strong id="ui-player-name">Tamu</strong></div>
+          <div>Score: <span id="score">0</span></div>
+          <div>Level: <span id="level-number">1</span></div>
+        </div>
+      </div>
+
+      <div class="game-area neon-panel">
+        <div id="instruction" class="instruction">Instruksi singkat muncul di sini.</div>
+        <div id="question" class="question">Pertanyaan muncul di sini.</div>
+        <div id="choices" class="choices">
+          <!-- buttons injected -->
+        </div>
+        <div id="feedback" class="feedback"></div>
+        <div class="game-controls">
+          <button id="next-btn" class="neon-btn" disabled>Next</button>
+          <button id="restart-level" class="neon-btn ghost">Ulangi</button>
+        </div>
+      </div>
+
+      <div class="progress-panel">
+        <h3>Progress & Badges</h3>
+        <div id="progress-list" class="progress-list">
+          <!-- progress items injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="page-profile" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+      </div>
+      <h2>Profil Pemain</h2>
+
+      <div class="profile-grid">
+        <div class="neon-card profile-form">
+          <h3>Isi / Perbarui Data Diri</h3>
+          <form id="profile-form">
+            <label>Nama Lengkap
+              <input type="text" id="profile-name" placeholder="Nama Anda" required>
+            </label>
+            <label>Sekolah / Kelas
+              <input type="text" id="profile-school" placeholder="SMP/SMA/Universitas atau kelas">
+            </label>
+            <label>Jenis Pengguna
+              <select id="profile-type">
+                <option value="smp">Pelajar SMP</option>
+                <option value="sma">Pelajar SMA</option>
+                <option value="mahasiswa">Mahasiswa</option>
+                <option value="umum">Pengguna Umum</option>
+              </select>
+            </label>
+            <label>Email (opsional)
+              <input type="email" id="profile-email" placeholder="email@domain.com">
+            </label>
+            <div style="margin-top:12px;">
+              <button type="submit" class="neon-btn">Simpan Profil</button>
+              <button id="clear-profile" type="button" class="neon-btn ghost">Hapus Profil</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="neon-card profile-preview">
+          <h3>Data Pemain Saat Ini</h3>
+          <div id="profile-display">
+            <!-- profile details injected -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="page-about" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+      </div>
+      <h2>Tentang EduQuest</h2>
+      <p>EduQuest dibuat sebagai proyek web statis yang menggabungkan pembelajaran dan permainan. Cocok untuk portofolio dan tugas.</p>
+      <ul>
+        <li>Target: Pelajar SMP/SMA, Mahasiswa, Pengguna umum</li>
+        <li>Teknologi: HTML, CSS, JavaScript</li>
+        <li>Progress disimpan di localStorage (tanpa backend)</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="page-contact" class="page">
+      <div class="page-top">
+        <button class="ghost-link back-home" data-target="page-home">&larr; Kembali ke Home</button>
+      </div>
+      <h2>Kontak</h2>
+      <p>Untuk pertanyaan, Anda dapat menghubungi: <a href="mailto:example@eduquest.local" class="neon-link">example@eduquest.local</a></p>
+      <p>Atau kunjungi repo GitHub & deploy ke GitHub Pages untuk portofolio Anda.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2026 EduQuest • Neon Aesthetic • Built with ❤️</div>
+    <div class="footer-links">
+      <a id="footer-games" class="ghost-link">Pilih Game</a>
+      <a id="footer-about" class="ghost-link">Tentang</a>
+      <a id="footer-profile" class="ghost-link">Profile</a>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
