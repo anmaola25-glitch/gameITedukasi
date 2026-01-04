@@ -1,0 +1,256 @@
+/* EduQuest — Dark Neon Aesthetic (Updated)
+   - Very dark gray background
+   - Neon accents (blue / purple / cyan / green)
+   - Stronger neon glow on cards & buttons
+   - Hover glow and smooth transitions
+   - Fonts: Poppins / Orbitron / Inter
+*/
+
+:root{
+  --bg: #050507; /* very dark gray */
+  --panel: #0e0f12;
+  --muted: #97a4b3;
+  --neon-blue: #00f0ff;
+  --neon-purple: #9b5cff;
+  --neon-cyan: #00ffd1;
+  --neon-green: #7eff6f;
+  --glass: rgba(255,255,255,0.03);
+  --glass-2: rgba(255,255,255,0.02);
+  --card-glow: 0 8px 30px rgba(0,240,255,0.06), 0 0 48px rgba(155,92,255,0.03);
+  --btn-glow: 0 10px 40px rgba(0,255,209,0.06), 0 0 36px rgba(155,92,255,0.04);
+  --fast: 160ms;
+  --medium: 280ms;
+  font-family: "Inter", "Poppins", sans-serif;
+  color-scheme: dark;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body.dark{
+  margin:0;
+  padding:0;
+  background: linear-gradient(180deg, var(--bg) 0%, #07070a 100%);
+  color: #dff7ff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background var(--medium) ease;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+.brand .logo{
+  font-family:"Orbitron", "Poppins", sans-serif;
+  font-size:22px;
+  margin:0;
+  color:var(--neon-purple);
+  text-shadow: 0 0 12px rgba(155,92,255,0.22), 0 0 28px rgba(0,240,255,0.04);
+}
+.brand .tagline{margin:0;font-size:12px;color:var(--muted)}
+.player-badge{
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Nav */
+.nav { display:flex; gap:8px; }
+.nav-btn{
+  background:none;border:0;color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer;
+  transition: color var(--fast) ease, transform var(--fast) ease;
+}
+.nav-btn:hover{ color:var(--neon-cyan); transform:translateY(-3px); text-shadow:0 0 12px rgba(0,255,209,0.06); }
+
+/* Buttons (neon) */
+.neon-btn{
+  position:relative;
+  background: linear-gradient(90deg, rgba(0,255,209,0.06), rgba(155,92,255,0.06));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #eaffff;
+  padding:10px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: transform var(--fast) ease, box-shadow var(--fast) ease, filter var(--fast) ease;
+  overflow:visible;
+}
+
+/* Neon glow pseudo-element for stronger aura */
+.neon-btn::before{
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:14px;
+  background: radial-gradient(ellipse at center, rgba(0,240,255,0.06) 0%, transparent 40%);
+  filter: blur(12px);
+  opacity:0;
+  transition: opacity var(--fast) ease, transform var(--fast) ease;
+  pointer-events:none;
+}
+.neon-btn:hover{
+  transform:translateY(-6px);
+  box-shadow: var(--btn-glow);
+}
+.neon-btn:hover::before{ opacity:1; transform: scale(1.02); }
+
+/* Variants */
+.neon-btn.large{ font-size:18px; padding:14px 26px; border-radius:16px; }
+.neon-btn.small{ padding:8px 12px; font-size:13px; }
+.neon-btn.ghost{ background:transparent; border:1px dashed rgba(255,255,255,0.04); color:var(--muted) }
+
+/* Cards with neon border & glow */
+.neon-card{
+  position:relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.007));
+  border-radius:14px;
+  padding:18px;
+  border: 1px solid rgba(0,255,209,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  transition: transform var(--medium) ease, box-shadow var(--medium) ease, border-color var(--medium) ease;
+  overflow:visible;
+}
+.neon-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  box-shadow: 0 0 28px rgba(0,240,255,0.04), 0 0 56px rgba(155,92,255,0.03);
+  opacity:0;
+  transition: opacity var(--medium) ease;
+  pointer-events:none;
+}
+.neon-card:hover{
+  transform:translateY(-10px);
+  box-shadow: var(--card-glow);
+  border-color: rgba(0,255,209,0.12);
+}
+.neon-card:hover::after{ opacity:1; }
+
+/* Layout */
+.container{ max-width:1100px; margin:28px auto; padding:0 20px; }
+.page{ display:none; padding:20px 0; }
+.page.active{ display:block; }
+.page-top{ display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+
+/* Hero */
+.hero{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  padding:28px;
+  border-radius:16px;
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 20px 64px rgba(0,0,0,0.6);
+}
+.hero h2{ font-family:"Orbitron",sans-serif; color:var(--neon-blue); font-size:42px; margin:0; text-shadow:0 0 22px rgba(0,240,255,0.12) }
+.lead{ color:var(--muted); max-width: 560px; }
+
+/* Cards grid */
+.cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:18px; }
+
+/* Levels grid */
+.levels-grid{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+.level-btn{
+  padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+  min-width:110px;text-align:center;cursor:pointer;background:var(--glass);
+  transition:all .16s ease, box-shadow var(--fast) ease;
+  color: #e6f9ff;
+}
+.level-btn:hover{ transform:translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.58), 0 0 20px rgba(0,240,255,0.04) }
+.level-locked{ filter:grayscale(.6); opacity:.6; cursor:not-allowed; position:relative; }
+.level-locked::after{ content:"🔒"; position:absolute; right:8px; top:8px; font-size:14px; }
+
+/* Game area */
+.game-header{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px; }
+.scorebox{
+  padding:8px 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  box-shadow: 0 8px 20px rgba(0,0,0,0.55);
+}
+.neon-panel{ background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); padding:18px; border-radius:12px; }
+.instruction{ color:var(--muted); margin-bottom:10px; }
+.question{ font-weight:700; font-size:18px; margin-bottom:12px; color:#e8fbff; text-shadow: 0 0 8px rgba(0,240,255,0.03) }
+.choices{ display:flex; flex-direction:column; gap:10px; }
+
+/* Choice buttons with neon hover and success/wrong states */
+.choice-btn{
+  padding:12px 14px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); cursor:pointer; color:inherit; text-align:left;
+  transition: transform var(--fast) ease, box-shadow var(--fast) ease, background var(--fast) ease;
+}
+.choice-btn:hover{ transform:translateY(-6px); box-shadow: 0 14px 36px rgba(0,0,0,0.6), 0 0 18px rgba(0,240,255,0.04); }
+.choice-btn.correct{
+  background: linear-gradient(90deg, rgba(126,255,111,0.06), rgba(0,255,209,0.04));
+  border-color: rgba(126,255,111,0.22);
+  box-shadow: 0 0 28px rgba(126,255,111,0.06), 0 0 18px rgba(0,255,209,0.06);
+}
+.choice-btn.wrong{
+  background: linear-gradient(90deg, rgba(255,88,100,0.02), rgba(155,92,255,0.00));
+  border-color: rgba(255,88,100,0.06);
+  box-shadow: 0 0 22px rgba(255,88,100,0.03);
+}
+.feedback{ margin-top:12px; font-weight:700; min-height:22px; color:var(--neon-cyan) }
+
+/* Progress panel */
+.progress-panel{ margin-top:18px; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); }
+.progress-list{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+.progress-item{
+  padding:8px 10px; border-radius:10px; background:var(--glass-2); border:1px solid rgba(255,255,255,0.02); min-width:120px;
+  transition: transform var(--fast) ease, box-shadow var(--fast) ease;
+}
+.progress-item:hover{ transform:translateY(-6px); box-shadow: 0 12px 34px rgba(0,0,0,0.6) }
+
+/* Neon badges */
+.neon-badge{
+  width:48px;height:48px;border-radius:50%;display:inline-grid;place-items:center;font-size:20px;
+  border:1px solid rgba(0,255,209,0.08); box-shadow:0 0 26px rgba(0,240,255,0.08), 0 6px 24px rgba(0,0,0,0.6);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+
+/* Profile layout */
+.profile-grid{ display:flex; gap:18px; margin-top:12px; flex-wrap:wrap; }
+.profile-form label{ display:block; margin-bottom:10px; font-size:14px; color:var(--muted); }
+.profile-form input, .profile-form select{
+  width:100%; padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit;
+  margin-top:6px;
+}
+.profile-preview #profile-display{ color:#e8fbff; font-size:14px; }
+
+/* Footer */
+.footer{ display:flex; justify-content:space-between; padding:18px 24px; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02) }
+
+/* Small utility: colored accent classes */
+.accent-blue{ color:var(--neon-blue); text-shadow:0 0 12px rgba(0,240,255,0.08) }
+.accent-purple{ color:var(--neon-purple); text-shadow:0 0 12px rgba(155,92,255,0.08) }
+.accent-cyan{ color:var(--neon-cyan); text-shadow:0 0 12px rgba(0,255,209,0.08) }
+.accent-green{ color:var(--neon-green); text-shadow:0 0 12px rgba(126,255,111,0.08) }
+
+/* Pulse animation for success highlight */
+@keyframes pulse-neon {
+  0% { box-shadow: 0 0 0 rgba(0,255,209,0.10); }
+  40% { box-shadow: 0 0 36px rgba(0,255,209,0.16); transform: scale(1.01); }
+  100% { box-shadow: 0 0 0 rgba(0,255,209,0.00); transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero h2{ font-size:34px; }
+  .profile-grid{ flex-direction:column; }
+}
+@media (max-width:720px){
+  .hero{ flex-direction:column; align-items:flex-start; gap:12px }
+  .game-header{ flex-direction:column; align-items:flex-start }
+  .nav{ display:none }
+  .neon-card{ padding:14px }
+  .hero h2{ font-size:28px }
+}
