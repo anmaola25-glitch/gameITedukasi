@@ -255,49 +255,127 @@ body.dark{
   .hero h2{ font-size:28px }
 }
 
-<!-- ABOUT -->
-<section id="page-about" class="page about-section">
-  <div class="about-container">
-    
-    <div class="about-text">
-      <h2>Tentang <span>EduQuest</span></h2>
-      <p class="about-desc">
-        <strong>EduQuest</strong> adalah platform edukasi berbasis web yang
-        menggabungkan konsep <em>pembelajaran interaktif</em> dan
-        <em>permainan edukatif</em> dalam satu pengalaman yang menyenangkan.
-        Aplikasi ini dirancang dengan nuansa <b>Neon Cyber Aesthetic</b>
-        untuk meningkatkan minat belajar pengguna.
-      </p>
+/* ============================= */
+/* ABOUT SECTION – NEON ANIMATED */
+/* ============================= */
 
-      <p>
-        EduQuest cocok digunakan sebagai media belajar mandiri,
-        proyek portofolio mahasiswa, maupun tugas pengembangan web.
-        Pengguna dapat memilih game edukasi, menyelesaikan level,
-        dan memantau progres belajar secara langsung.
-      </p>
-    </div>
+#page-about {
+  padding: 70px 20px;
+}
 
-    <div class="about-card">
-      <h3>Informasi Utama</h3>
-      <ul>
-        <li>
-          <span>🎯 Target Pengguna</span>
-          <p>Pelajar SMP/SMA, Mahasiswa, dan Pengguna Umum</p>
-        </li>
-        <li>
-          <span>💻 Teknologi</span>
-          <p>HTML, CSS, dan JavaScript</p>
-        </li>
-        <li>
-          <span>💾 Sistem Penyimpanan</span>
-          <p>Progress disimpan menggunakan <code>localStorage</code> (tanpa backend)</p>
-        </li>
-        <li>
-          <span>🎮 Konsep</span>
-          <p>Game-based Learning & Interactive Education</p>
-        </li>
-      </ul>
-    </div>
+/* Judul */
+#page-about h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #7df9ff;
+  text-shadow: 0 0 8px rgba(125,249,255,0.6);
+  animation: fadeDown 1s ease forwards;
+}
 
-  </div>
-</section>
+/* Paragraf */
+#page-about p {
+  max-width: 800px;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin-bottom: 15px;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* ===================== */
+/* INFORMASI UTAMA CARD */
+/* ===================== */
+
+#page-about ul {
+  margin-top: 30px;
+  max-width: 520px;
+  padding: 30px;
+  list-style: none;
+  background: rgba(255,255,255,0.04);
+  border-radius: 18px;
+  border: 1px solid rgba(125,249,255,0.25);
+  backdrop-filter: blur(10px);
+  animation: glowIn 1.4s ease forwards;
+}
+
+/* Item list */
+#page-about ul li {
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 28px;
+  color: #ffffff;
+  transition: 0.3s ease;
+}
+
+/* Bullet neon */
+#page-about ul li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #7df9ff;
+  text-shadow: 0 0 6px #7df9ff;
+}
+
+/* Hover efek */
+#page-about ul li:hover {
+  transform: translateX(6px);
+  color: #7df9ff;
+}
+
+/* Subtext */
+#page-about ul li p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowIn {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(125,249,255,0);
+  }
+  to {
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(125,249,255,0.35);
+  }
+}
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width: 768px) {
+  #page-about h2 {
+    font-size: 1.8rem;
+  }
+
+  #page-about ul {
+    padding: 20px;
+  }
+}
