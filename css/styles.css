@@ -379,3 +379,144 @@ body.dark{
     padding: 20px;
   }
 }
+
+/* ===================== */
+/* CONTACT SECTION */
+/* ===================== */
+
+#page-contact {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Wrapper */
+.contact-wrapper {
+  width: 100%;
+  max-width: 480px;
+  animation: fadeUpContact 1.2s ease forwards;
+}
+
+/* Card */
+.contact-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  border: 1px solid rgba(125,249,255,0.3);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow: 0 0 25px rgba(125,249,255,0.2);
+  transition: 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(125,249,255,0.45);
+}
+
+/* Title */
+.neon-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #7df9ff;
+  text-shadow: 0 0 10px rgba(125,249,255,0.7);
+  animation: neonPulse 2.5s infinite alternate;
+}
+
+/* Subtitle */
+.contact-subtitle {
+  color: #d0d0d0;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-btn {
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.35s ease;
+}
+
+/* Neon Button */
+.contact-btn.neon {
+  background: linear-gradient(135deg, #7df9ff, #5be3ff);
+  color: #000;
+  box-shadow: 0 0 15px rgba(125,249,255,0.7);
+}
+
+.contact-btn.neon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(125,249,255,0.9);
+}
+
+/* Ghost Button */
+.contact-btn.ghost {
+  color: #7df9ff;
+  border: 1px solid rgba(125,249,255,0.6);
+  background: transparent;
+}
+
+.contact-btn.ghost:hover {
+  background: rgba(125,249,255,0.15);
+  transform: scale(1.05);
+}
+
+/* Footer */
+.contact-footer {
+  font-size: 0.85rem;
+  color: #bdbdbd;
+  line-height: 1.6;
+}
+
+.contact-footer span {
+  color: #7df9ff;
+  text-shadow: 0 0 6px rgba(125,249,255,0.6);
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes fadeUpContact {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow: 0 0 8px rgba(125,249,255,0.4);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(125,249,255,0.9);
+  }
+}
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 30px 20px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+}
